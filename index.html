@@ -22,38 +22,52 @@
   <body class="mixpanel-platform-body">
     <div class="mixpanel-platform-section">
       <div id="eventSelect" style="float: left;"></div>
-      <div id="by" class="mixpanel-platform-label" style="margin-left: 10px; display: none;">by</div>
-      <div id="propSelect" style="float: left;"></div>
-      <div style="clear: both;"></div><br clear="all" />
+
+      <div style="clear: both;"></div>
       <div id="retentionWindow">
         <div id="d1Retention" class="retentionBox">D1: 30%</div>
         <div id="d7Retention" class="retentionBox">D7: 20%</div>
         <div id="d30Retention" class="retentionBox">D30: 1%</div>
       </div>
     </div>
-    <div id="table"></div>
     <script>
       var eventSelect = $('#eventSelect').MPEventSelect();
-      var propSelect  = $('#propSelect').MPPropertySelect();
-      var dateSelect  = $('#dateSelect').MPDatepicker();
-      var eventGraph  = $('#graph').MPChart({chartType: 'line'});
-      var eventTable  = $('#table').MPTable({
-        showPercentages: true,
-        firstColHeader: 'Event'
-      });
+      //var propSelect  = $('#propSelect').MPPropertySelect();
+
 
       var runQuery = function() {
         var eventName = eventSelect.MPEventSelect('value'),
-            propName  = propSelect.MPPropertySelect('value'),
-            dateRange = dateSelect.MPDatepicker('value');
+            propName  = propSelect.MPPropertySelect('value');
 
         if (eventName) {
-          MP.api.segment(eventName, propName, dateRange).done(function(results) {
-            eventGraph.MPChart('setData', results);
-            eventTable.MPTable('setData', results);
+          var d1params = {
+              from: moment().subtract(1, 'days'),
+              to: moment(),
+          
+              born_event: eventName
+          };
+          
+          var d7params = {
+              from: moment().subtract(7, 'days'),
+              to: moment(),
+          
+              born_event: eventName
+          };
+          
+          var d30params = {
+              from: moment().subtract(30, 'days'),
+              to: moment(),
+          
+              born_event: eventName
+          };
+          
+          MP.api.retention(eventName, d30params).done(function(results) {
+              console.log(results.values());
           });
+          
         }
       };
+      
       eventSelect.on('change', function(e, eventName) {
         propSelect.MPPropertySelect('setEvent', eventName);
         $("#by").show();
