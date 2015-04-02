@@ -5,6 +5,14 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.mxpnl.com/libs/mixpanel-platform/css/reset.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.mxpnl.com/libs/mixpanel-platform/build/mixpanel-platform.v0.latest.min.css">
     <script src="https://cdn.mxpnl.com/libs/mixpanel-platform/build/mixpanel-platform.v0.latest.min.js"></script>
+    <style>
+      .retentionBox {
+        float:left;
+        size: 20px;
+        margin:20px;
+        
+      }
+    </style>
   </head>
   <body class="mixpanel-platform-body">
     <div class="mixpanel-platform-section">
@@ -13,9 +21,9 @@
       <div id="propSelect" style="float: left;"></div>
       <div style="clear: both;"></div>
       <div id="retentionWindow">
-        <div id="d1Retention"></div>
-        <div id="d7Retention"></div>
-        <div id="d30Retention"></div>
+        <div id="d1Retention" class="retentionBox">30%</div>
+        <div id="d7Retention" class="retentionBox">20%</div>
+        <div id="d30Retention" class="retentionBox">1%</div>
       </div>
     </div>
     <div id="table"></div>
