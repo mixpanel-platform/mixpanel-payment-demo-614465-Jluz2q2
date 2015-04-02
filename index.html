@@ -25,9 +25,9 @@
 
       <div style="clear: both;"></div>
       <div id="retentionWindow">
-        <div id="d1Retention" class="retentionBox">D1: <span id="d1"></span></div>
-        <div id="d7Retention" class="retentionBox">D7: <span id="d7"></span></div>
-        <div id="d30Retention" class="retentionBox">D30: <span id="d30"></span></div>
+        <div id="d1Retention" class="retentionBox">D1: <span id="d1"></span>%</div>
+        <div id="d7Retention" class="retentionBox">D7: <span id="d7"></span>%</div>
+        <div id="d30Retention" class="retentionBox">D30: <span id="d30"></span>%</div>
       </div>
     </div>
     <script>
@@ -58,7 +58,7 @@
               // calculating ON DAY 30 the number of people who came back... might want to sum all days up to 30
               if(d30RetenObj != null)
               {
-                $("#d30").html(d30RetenObj["counts"][30]/d30RetenObj["first"]);
+                $("#d30").html(d30RetenObj["counts"][30]/d30RetenObj["first"]*100.toFixed(2));
               }
               else
               {
@@ -66,7 +66,7 @@
               }
               if(d7RetenObj != null)
               {
-                $("#d7").html(d7RetenObj["counts"][7]/d30RetenObj["first"]);
+                $("#d7").html(d7RetenObj["counts"][7]/d30RetenObj["first"]*100.toFixed(2)*100.toFixed(2));
               }
               else
               {
@@ -74,7 +74,7 @@
               }
               if(d1RetenObj != null)
               {
-                $("#d1").html(d1RetenObj["counts"][1]/d30RetenObj["first"]);
+                $("#d1").html(d1RetenObj["counts"][1]/d30RetenObj["first"]*100.toFixed(2));
               }
               else
               {
