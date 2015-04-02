@@ -51,7 +51,7 @@
 
           MP.api.retention(eventName, params).done(function(results) {
               console.log(results.values());
-              alert(moment().subtract(30,'days'));
+              alert(moment().subtract(30,'days').format('"MM-DD-YYYY"'));
               console.log(results.values()[moment().subtract(30,'days')]);
           });
           
