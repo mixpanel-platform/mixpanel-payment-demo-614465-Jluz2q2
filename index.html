@@ -39,28 +39,17 @@
         var eventName = eventSelect.MPEventSelect('value');
 
         if (eventName) {
-          var d1params = {
-              from: moment().subtract(1, 'days'),
+          var params = {
+              from: moment().subtract(31, 'days'),
               to: moment(),
+              unit: 'day',
+              interval_count: 31,
           
               born_event: eventName
           };
           
-          var d7params = {
-              from: moment().subtract(7, 'days'),
-              to: moment(),
           
-              born_event: eventName
-          };
-          
-          var d30params = {
-              from: moment().subtract(30, 'days'),
-              to: moment(),
-          
-              born_event: eventName
-          };
-          
-          MP.api.retention(eventName, d30params).done(function(results) {
+          MP.api.retention(eventName, params).done(function(results) {
               console.log(results.values());
           });
           
