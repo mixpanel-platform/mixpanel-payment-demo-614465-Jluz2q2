@@ -51,7 +51,7 @@
 
           MP.api.retention(eventName, params).done(function(results) {
               console.log(results.values()[moment().subtract(30,'days').format('YYYY-MM-DD')]);
-              var d30RetenObj = results.values()[moment().subtract(30,'days').format('YYYY-MM-DD')];
+              var d30RetenObj = results.values()[moment().subtract(30,'days').format('YYYY-MM-DD')]["counts"][30]/results.values()[moment().subtract(30,'days').format('YYYY-MM-DD')]['first']*100;
               var d7RetenObj = results.values()[moment().subtract(7,'days').format('YYYY-MM-DD')];
               var d1RetenObj = results.values()[moment().subtract(1,'days').format('YYYY-MM-DD')];
               
