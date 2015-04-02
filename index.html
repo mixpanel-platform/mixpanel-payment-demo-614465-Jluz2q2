@@ -52,13 +52,13 @@
           MP.api.retention(eventName, params).done(function(results) {
               console.log(results.values()[moment().subtract(30,'days').format('YYYY-MM-DD')]);
               var d30RetenObj = results.values()[moment().subtract(30,'days').format('YYYY-MM-DD')]["counts"][30]/results.values()[moment().subtract(30,'days').format('YYYY-MM-DD')]['first']*100;
-              var d7RetenObj = results.values()[moment().subtract(7,'days').format('YYYY-MM-DD')];
-              var d1RetenObj = results.values()[moment().subtract(1,'days').format('YYYY-MM-DD')];
+              var d7RetenObj = results.values()[moment().subtract(7,'days').format('YYYY-MM-DD')]["counts"][7]/results.values()[moment().subtract(7,'days').format('YYYY-MM-DD')]['first']*100;
+              var d1RetenObj = results.values()[moment().subtract(1,'days').format('YYYY-MM-DD')]["counts"][1]/results.values()[moment().subtract(1,'days').format('YYYY-MM-DD')]['first']*100;
               
               // calculating ON DAY 30 the number of people who came back... might want to sum all days up to 30
               if(d30RetenObj != null)
               {
-                $("#d30").html(d30RetenObj["counts"][30]/d30RetenObj["first"]*100);
+                $("#d30").html(d30RetenObj);
               }
               else
               {
@@ -66,7 +66,7 @@
               }
               if(d7RetenObj != null)
               {
-                $("#d7").html(d7RetenObj["counts"][7]/d30RetenObj["first"]*100);
+                $("#d7").html(d7RetenObj);
               }
               else
               {
@@ -74,7 +74,7 @@
               }
               if(d1RetenObj != null)
               {
-                $("#d1").html(d1RetenObj["counts"][1]/d30RetenObj["first"]*100);
+                $("#d1").html(d1RetenObj);
               }
               else
               {
