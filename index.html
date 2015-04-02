@@ -44,11 +44,11 @@
               to: moment(),
               unit: 'day',
               interval_count: 31,
+              limit: 100,
           
               born_event: eventName
           };
-          alert (moment());
-          
+
           MP.api.retention(eventName, params).done(function(results) {
               console.log(results.values());
           });
