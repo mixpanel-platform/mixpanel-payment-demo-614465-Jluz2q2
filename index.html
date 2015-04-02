@@ -55,6 +55,31 @@
               var d7RetenObj = results.values()[moment().subtract(7,'days').format('YYYY-MM-DD')];
               var d1RetenObj = results.values()[moment().subtract(1,'days').format('YYYY-MM-DD')];
               
+              // calculating ON DAY 30 the number of people who came back... might want to sum all days up to 30
+              if(d30RetenObj != null)
+              {
+                $("d30").html(d30RetenObj["counts"][30]/d30RetenObj["first"]);
+              }
+              else
+              {
+                
+              }
+              if(d7RetenObj != null)
+              {
+                
+              }
+              else
+              {
+                
+              }
+              if(d1RetenObj != null)
+              {
+                
+              }
+              else
+              {
+                
+              }
           });
           
         }
