@@ -26,8 +26,8 @@
       <div style="clear: both;"></div>
       <div id="retentionWindow">
         <div id="d1Retention" class="retentionBox">D1: <span id="d1"></span></div>
-        <div id="d7Retention" class="retentionBox">D7: <span id="d1"></span></div>
-        <div id="d30Retention" class="retentionBox">D30: <span id="d1"></span></div>
+        <div id="d7Retention" class="retentionBox">D7: <span id="d2"></span></div>
+        <div id="d30Retention" class="retentionBox">D30: <span id="d3"></span></div>
       </div>
     </div>
     <script>
@@ -50,9 +50,11 @@
           };
 
           MP.api.retention(eventName, params).done(function(results) {
-              console.log(results.values()["2015-03-03"]);
-              var dateWanted = moment().subtract(30,'days').format('YYYY-MM-DD');
               console.log(results.values()[moment().subtract(30,'days').format('YYYY-MM-DD')]);
+              var d30RetenObj = results.values()[moment().subtract(30,'days').format('YYYY-MM-DD')];
+              var d7RetenObj = results.values()[moment().subtract(7,'days').format('YYYY-MM-DD')];
+              var d1RetenObj = results.values()[moment().subtract(1,'days').format('YYYY-MM-DD')];
+              
           });
           
         }
