@@ -38,9 +38,9 @@
     fromDate.setMinutes(0);
     fromDate.setSeconds(0);
     fromDate.setHours(0);
-    var d1Retention;
-    var d7Retention;
-    var d30Retention;
+    var d1RetentionList = [];
+    var d7RetentionList = [];
+    var d30RetentionList = [];
     var params = {
           from: fromDate,
           to: moment(),
@@ -52,7 +52,16 @@
       MP.api.query('/api/2.0/retention', params).done(function(results) {
           console.log(results);
           for(date in results){
-            console.log(results[date]);
+            if(results[date][first] == 0){
+              d1RetentionList.push(0);
+              d7RetentionList.push(0);
+              d30RetentionList.push(0);
+            }
+            else{
+              d1RetentionList.push(results[date][counts][1]/results[date][first]);
+              d7RetentionList.push(results[date][counts][7]/results[date][first]);
+              d30RetentionList.push(results[date][counts][30]/results[date][first]);
+            }
           }
       });
     </script>
