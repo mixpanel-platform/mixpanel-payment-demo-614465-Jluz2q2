@@ -38,7 +38,9 @@
     fromDate.setMinutes(0);
     fromDate.setSeconds(0);
     fromDate.setHours(0);
-    
+    var d1Retention;
+    var d7Retention;
+    var d30Retention;
     var params = {
           from: fromDate,
           to: moment(),
@@ -49,6 +51,7 @@
       };
       MP.api.query('/api/2.0/retention', params).done(function(results) {
           console.log(results);
+          
       });
     </script>
   </body>
