@@ -64,19 +64,17 @@
             }
           }
           document.getElementById("d1").innerHTML = Math.round((averageArrayVals(d1RetentionList)*100) * 100) / 100;
+          document.getElementById("d7").innerHTML = Math.round((averageArrayVals(d7RetentionList)*100) * 100) / 100;
+          document.getElementById("d30").innerHTML = Math.round((averageArrayVals(d30RetentionList)*100) * 100) / 100;
       });
       
       function averageArrayVals(retentionList){
         var total = 0;
-        console.log(retentionList);
         for(var i = 0; i < retentionList.length; i++){
           if(!isNaN(retentionList[i])){
             total += retentionList[i];
-            //total = Math.round(total * 100) / 100
-            console.log(total);
           }
         }
-        console.log(retentionList.length);
         return total/retentionList.length;
       }
       
