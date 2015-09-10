@@ -68,9 +68,12 @@
       
       function averageArrayVals(retentionList){
         var total = 0;
+        console.log(retentionList);
         for(var i = 0; i < retentionList.length; i++){
           total += retentionList[i];
+          console.log(total);
         }
+        console.log(retentionList.length);
         return total/retentionList.length;
       }
       
