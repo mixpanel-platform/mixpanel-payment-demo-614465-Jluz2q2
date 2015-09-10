@@ -52,7 +52,7 @@
       MP.api.query('/api/2.0/retention', params).done(function(results) {
           console.log(results);
           for(date in results){
-            console.log(date);
+            console.log(results[date]);
           }
       });
     </script>
