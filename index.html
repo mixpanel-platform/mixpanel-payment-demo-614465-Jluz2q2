@@ -38,12 +38,11 @@
     fromDate.setMinutes(0);
     fromDate.setSeconds(0);
     fromDate.setHours(0);
-    alert(fromDate);
     var params = {
           from: fromDate,
           to: moment(),
           unit: 'day',                      
-          interval_count: 1,                
+          interval_count: 30,                
           limit: 100,    
           retention_type: 'compounded'
       };
