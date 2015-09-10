@@ -70,7 +70,7 @@
         var total = 0;
         console.log(retentionList);
         for(var i = 0; i < retentionList.length; i++){
-          total += retentionList[i];
+          total += Math.round(retentionList[i] * 100) / 100;
           console.log(total);
         }
         console.log(retentionList.length);
