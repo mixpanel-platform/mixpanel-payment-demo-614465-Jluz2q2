@@ -52,15 +52,15 @@
       MP.api.query('/api/2.0/retention', params).done(function(results) {
           console.log(results);
           for(date in results){
-            if(results[date][first] == 0){
+            if(results[date]['first'] == 0){
               d1RetentionList.push(0);
               d7RetentionList.push(0);
               d30RetentionList.push(0);
             }
             else{
-              d1RetentionList.push(results[date][counts][1]/results[date][first]);
-              d7RetentionList.push(results[date][counts][7]/results[date][first]);
-              d30RetentionList.push(results[date][counts][30]/results[date][first]);
+              d1RetentionList.push(results[date]['counts'][1]/results[date]['first']);
+              d7RetentionList.push(results[date]['counts'][7]/results[date]['first']);
+              d30RetentionList.push(results[date]['counts'][30]/results[date]['first']);
             }
           }
           document.getElementById("myspan").innerHTML = averageArrayVals(d1RetentionList);
