@@ -21,7 +21,6 @@
   </head>
   <body class="mixpanel-platform-body">
     <div class="mixpanel-platform-section">
-      <div id="eventSelect" style="float: left;"></div>
 
       <div style="clear: both;"></div>
       <div id="retentionWindow">
@@ -31,62 +30,16 @@
       </div>
     </div>
     <script>
-      var eventSelect = $('#eventSelect').MPEventSelect();
-      //var propSelect  = $('#propSelect').MPPropertySelect();
-
-
-      var runQuery = function() {
-        var eventName = eventSelect.MPEventSelect('value');
-
-        if (eventName) {
-          var params = {
-              from: moment().subtract(35, 'days'),
-              to: moment(),
-              unit: 'day',
-              interval_count: 31,
-              limit: 100,
-          
-              born_event: "Create Account"
-          };
-
-          MP.api.retention(eventName, params).done(function(results) {
-              console.log(results.values()[moment().subtract(30,'days').format('YYYY-MM-DD')]);
-              var d30RetenObj = results.values()[moment().subtract(30,'days').format('YYYY-MM-DD')]["counts"][30]/results.values()[moment().subtract(30,'days').format('YYYY-MM-DD')]['first']*100;
-              var d7RetenObj = results.values()[moment().subtract(7,'days').format('YYYY-MM-DD')]["counts"][7]/results.values()[moment().subtract(7,'days').format('YYYY-MM-DD')]['first']*100;
-              var d1RetenObj = results.values()[moment().subtract(1,'days').format('YYYY-MM-DD')]["counts"][1]/results.values()[moment().subtract(1,'days').format('YYYY-MM-DD')]['first']*100;
-              
-              // calculating ON DAY 30 the number of people who came back... might want to sum all days up to 30
-              if(d30RetenObj != null)
-              {
-                $("#d30").html(d30RetenObj.toFixed(2));
-              }
-              else
-              {
-                $("#d30").html("(no data)");
-              }
-              if(d7RetenObj != null)
-              {
-                $("#d7").html(d7RetenObj.toFixed(2));
-              }
-              else
-              {
-                $("#d7").html("(no data)");
-              }
-              if(d1RetenObj != null)
-              {
-                $("#d1").html(d1RetenObj.toFixed(2));
-              }
-              else
-              {
-                $("#d1").html("(no data)");
-              }
-          });
-          
-        }
+    var params = {
+          from: moment().subtract(1, 'months'),
+          to: moment(),
+          unit: 'day',                      
+          interval_count: 1,                
+          limit: 100,    
+          retention_type: 'compounded'
       };
-      
-      eventSelect.on('change', function(e, eventName) {
-        runQuery();
+      MP.api.retention(null, {from: moment().subtract(1, 'days'), inverval_count: 2}).done(function(results) {
+          console.log(results.values());
       });
     </script>
   </body>
