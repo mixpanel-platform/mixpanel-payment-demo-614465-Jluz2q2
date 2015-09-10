@@ -38,7 +38,7 @@
           limit: 100,    
           retention_type: 'compounded'
       };
-      MP.api.retention(null, {from: moment().subtract(1, 'days'), inverval_count: 2}).done(function(results) {
+      MP.api.query('/api/2.0/retention', params).done(function(results) {
           console.log(results.values());
       });
     </script>
