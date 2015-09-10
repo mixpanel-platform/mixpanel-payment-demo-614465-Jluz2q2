@@ -63,7 +63,17 @@
               d30RetentionList.push(results[date][counts][30]/results[date][first]);
             }
           }
+          document.getElementById("myspan").innerHTML = averageArrayVals(d1RetentionList);
       });
+      
+      function averageArrayVals(retentionList){
+        var total = 0;
+        for(var i = 0; i < retentionList.length; i++){
+          total += retentionList[i];
+        }
+        return total/retentionList.length;
+      }
+      
     </script>
   </body>
 </html>
