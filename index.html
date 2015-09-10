@@ -63,7 +63,7 @@
               d30RetentionList.push(results[date]['counts'][30]/results[date]['first']);
             }
           }
-          document.getElementById("d1").innerHTML = averageArrayVals(d1RetentionList);
+          document.getElementById("d1").innerHTML = averageArrayVals(d1RetentionList)*100;
       });
       
       function averageArrayVals(retentionList){
