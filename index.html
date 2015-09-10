@@ -33,8 +33,11 @@
     //Thu Sep 10 2015 16:06:43 GMT-0700
     //console.log(moment().year());
     var fromDate = new Date();
-    fromDate.setMonth(1);
+    fromDate.setMonth(0);
     fromDate.setDate(1);
+    fromDate.setMinutes(0);
+    fromDate.setSeconds(0);
+    fromDate.setHours(0);
     alert(fromDate);
     var params = {
           from: fromDate,
