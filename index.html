@@ -45,7 +45,6 @@
           retention_type: 'compounded'
       };
       MP.api.query('/api/2.0/retention', params).done(function(results) {
-          console.log(results);
           for(date in results){
             if(results[date]['first'] == 0){
               d1RetentionList.push(0);
